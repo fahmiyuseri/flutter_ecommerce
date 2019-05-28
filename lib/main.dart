@@ -52,35 +52,35 @@ class HomePageState extends State<HomePage>{
                  onTap: (){},
                  child: ListTile( 
                    title: Text("Home Page"),
-                   leading: Icon(Icons.home),
+                   leading: Icon(Icons.home, color: Colors.orange),
                   )
                ),
                 InkWell(
                  onTap: (){},
                  child: ListTile( 
                    title: Text("My Account"),
-                   leading: Icon(Icons.person),
+                   leading: Icon(Icons.person, color: Colors.indigo),
                   )
                ),
                 InkWell(
                  onTap: (){},
                  child: ListTile( 
                    title: Text("My Orders"),
-                   leading: Icon(Icons.shopping_basket),
+                   leading: Icon(Icons.shopping_basket, color: Colors.green),
                   )
                ),
                 InkWell(
                  onTap: (){},
                  child: ListTile( 
                    title: Text("Categories"),
-                   leading: Icon(Icons.dashboard),
+                   leading: Icon(Icons.dashboard, color: Colors.yellow),
                   )
                ),
                  InkWell(
                  onTap: (){},
                  child: ListTile( 
                    title: Text("Favourites"),
-                   leading: Icon(Icons.favorite),
+                   leading: Icon(Icons.favorite, color: Colors.red),
                   )
                ),
                 
@@ -89,14 +89,14 @@ class HomePageState extends State<HomePage>{
                  onTap: (){},
                  child: ListTile( 
                    title: Text("Settings"),
-                   leading: Icon(Icons.settings),
+                   leading: Icon(Icons.settings, color: Colors.blue),
                   )
                ),
                 InkWell(
                  onTap: (){},
                  child: ListTile( 
                    title: Text("About"),
-                   leading: Icon(Icons.help),
+                   leading: Icon(Icons.help, color: Colors.amber),
                   )
                ),
                
