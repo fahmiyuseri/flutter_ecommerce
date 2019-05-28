@@ -47,6 +47,13 @@ flutter:
   - images/w3.jpeg
   - images/w4.jpeg
   - images/m2.jpg
+  - images/cats/tshirt.png
+  - images/cats/dress.png
+  - images/cats/formal.png
+  - images/cats/informal.png
+  - images/cats/shoe.png
+  - images/cats/jeans.png
+  - images/cats/accessories.png
 
   #  - images/a_dot_ham.jpeg
 
