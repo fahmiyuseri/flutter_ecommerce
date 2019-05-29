@@ -3,6 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 //my own imports
 import 'package:flutter_ecommerce/components/horizontal_listview.dart';
+import 'package:flutter_ecommerce/components/products.dart';
 void main(){
   runApp(
     new MaterialApp(
@@ -130,10 +131,20 @@ class HomePageState extends State<HomePage>{
         children: <Widget>[
           image_carousel,
           //padding widger
-          new Padding(padding: const EdgeInsets.all(8.0),
+          new Padding(padding: const EdgeInsets.all(20.0),
           child: new Text("Categories1",)),
           //HOrizontal list
            HorizontalList(),
+
+           //Padding widget
+           new Padding(padding: const EdgeInsets.all(20.0),
+           child: new Text("Recent Products"),),
+
+           //Grid view
+           Container(
+             height: 500,
+               child: Products()
+             ,)
         ],
       )
     );
