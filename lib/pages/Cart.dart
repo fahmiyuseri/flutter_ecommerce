@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_ecommerce/components/cart_products.dart';
 
 
 class Cart extends StatefulWidget {
@@ -30,6 +30,8 @@ class CartState extends State<Cart> {
         ],
       ),
 
+      //==== cart product
+      body: new CartProducts(),
       //=====Bottom navigation bar ===
       bottomNavigationBar: new Container(
         color: Colors.white,

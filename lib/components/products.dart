@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce/pages/ProductDetails.dart';
 
+import 'cart_products.dart';
+
 class Products extends StatefulWidget{
 
 
@@ -42,23 +44,27 @@ class _ProductState extends State<Products>{
     },
     
   ];
+
   @override
   Widget build(BuildContext context) {
+
     return GridView.builder(
       itemCount: product_list.length,
       primary: false,
       shrinkWrap: false,
        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
        itemBuilder: (BuildContext context, int index){
-         return(Single_prod(
-          item_id: product_list[index]["item_id"],
-          product_name: product_list[index]["name"],
-          prod_picture: product_list[index]["picture"],
-          prod_oldPrice: product_list[index]["old_price"],
-          prod_price: product_list[index]["price"],
-          
-         )
+         var singleproduct = SingleProductModel( item_id: product_list[index]["item_id"],
+             product_name: product_list[index]["name"],
+             prod_picture: product_list[index]["picture"],
+             prod_oldPrice: product_list[index]["old_price"],
+             prod_price: product_list[index]["price"]);
+         return(Single_prod(SingleProductModel: singleproduct,)
          );
+
+          
+
+
        },
 
     );
@@ -66,48 +72,41 @@ class _ProductState extends State<Products>{
 }
 
 class Single_prod extends StatelessWidget{
-    final item_id;
-    final product_name;
-    final prod_picture;
-    final prod_oldPrice;
-    final prod_price;
+    final SingleProductModel;
+
     Single_prod({
-      this.item_id,
-      this.product_name,
-      this.prod_picture,
-      this.prod_oldPrice,
-      this.prod_price
+      this.SingleProductModel
     });
   @override
   Widget build(BuildContext context) {
   
     return Card(
       child: Hero(
-        tag: item_id,
+        tag: SingleProductModel.item_id,
         child: Material(
           child: InkWell(onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-              builder: (context) => new ProductDetails(product_name: product_name,prod_picture: prod_picture,prod_price: prod_price,prod_oldPrice:prod_oldPrice,item_id: item_id))),
+              builder: (context) => new ProductDetails(SingleProductModel: this.SingleProductModel,))),
           
           child: GridTile(
             footer: Container(
               color: Colors.white70,
               child: ListTile(
-                leading: Text(product_name, style: TextStyle(fontWeight: FontWeight.bold),
+                leading: Text(SingleProductModel.product_name, style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              title: Text("RM "+prod_price.toString(),style: TextStyle(
+              title: Text("RM "+SingleProductModel.prod_price.toString(),style: TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.w100,
                 
               ),
               ),
-              subtitle: Text("RM "+prod_oldPrice.toString(),style: TextStyle(
+              subtitle: Text("RM "+SingleProductModel.prod_oldPrice.toString(),style: TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.w100,
                 decoration: TextDecoration.lineThrough),
                 ),
             ),
           ),
-          child: Image.asset(prod_picture, 
+          child: Image.asset(SingleProductModel.prod_picture,
           fit: BoxFit.cover,)
           ,),
         ),

@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/components/cart_products.dart';
 import 'package:flutter_ecommerce/components/products.dart';
 
 class ProductDetails extends StatefulWidget{
-  final item_id;
-  final product_name;
-  final prod_picture;
-  final prod_oldPrice;
-  final prod_price;
+  final SingleProductModel;
+
   ProductDetails({
-    this.item_id,
-    this.product_name,
-    this.prod_picture,
-    this.prod_oldPrice,
-    this.prod_price
+    this.SingleProductModel,
+
   });
   @override
   ProductDetailState createState() => ProductDetailState();
@@ -52,7 +47,7 @@ class ProductDetailState extends State<ProductDetails>{
     return Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.red,
-        title: Text(widget.product_name),
+        title: Text(widget.SingleProductModel.product_name),
         actions: <Widget>[
           new IconButton(icon: Icon(Icons.search,color: Colors.white), onPressed: (){}),
           new IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white), onPressed: (){})
@@ -67,20 +62,20 @@ class ProductDetailState extends State<ProductDetails>{
             child: GridTile(
               child: Container(
                 color: Colors.white,
-                child: Image.asset(widget.prod_picture),
+                child: Image.asset(widget.SingleProductModel.prod_picture),
               ),
               footer: new Container(
                 color: Colors.white70,
                 child: ListTile(
-                  leading: new Text(widget.product_name, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0),),
+                  leading: new Text(widget.SingleProductModel.product_name, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0),),
                   title: new Row(
                     children: <Widget>[
                       Expanded(
-                        child: new Text("RM "+widget.prod_oldPrice.toString(),
+                        child: new Text("RM "+widget.SingleProductModel.prod_oldPrice.toString(),
                             style:TextStyle(color: Colors.grey,decoration: TextDecoration.lineThrough)),
                       ),
                       Expanded(
-                        child: new Text("RM "+widget.prod_price.toString(), style:TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
+                        child: new Text("RM "+widget.SingleProductModel.prod_price.toString(), style:TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
                       ),
                     ],
                   ),
@@ -156,7 +151,10 @@ class ProductDetailState extends State<ProductDetails>{
 
               ),
 
-              new IconButton(icon:Icon(Icons.add_shopping_cart), onPressed: (){}),
+              new IconButton(icon:Icon(Icons.add_shopping_cart), onPressed: (){
+                CartProducts.listCart.add(widget.SingleProductModel);
+
+              }),
               new IconButton(icon:Icon(Icons.favorite_border, color: Colors.red,), onPressed: (){}),
             ],
           ),
@@ -171,7 +169,7 @@ class ProductDetailState extends State<ProductDetails>{
               Padding(padding: const EdgeInsets.fromLTRB(12.9, 5.0, 5.0, 5.0),
                 child: new Text("Product Name", style: TextStyle(color: Colors.grey),),),
               Padding(padding: const EdgeInsets.all(5.0),
-                child: new Text(widget.product_name,),)
+                child: new Text(widget.SingleProductModel.product_name,),)
             ],
           ),
           new Row(
@@ -201,6 +199,8 @@ class ProductDetailState extends State<ProductDetails>{
       ),
     );
   }
+
+
 
 
 }
