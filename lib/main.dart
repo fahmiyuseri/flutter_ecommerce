@@ -4,6 +4,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 //my own imports
 import 'package:flutter_ecommerce/components/horizontal_listview.dart';
 import 'package:flutter_ecommerce/components/products.dart';
+import 'package:flutter_ecommerce/pages/Cart.dart';
 void main(){
   runApp(
     new MaterialApp(
@@ -50,7 +51,9 @@ class HomePageState extends State<HomePage>{
         title: Text("Fashion App"),
         actions: <Widget>[
           new IconButton(icon: Icon(Icons.search,color: Colors.white), onPressed: (){}),
-          new IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white), onPressed: (){})
+          new IconButton(icon: Icon(Icons.shopping_cart,color: Colors.white), onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => new Cart()));
+          })
         ],
       ),
       drawer: new Drawer(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce/components/products.dart';
 
 class ProductDetails extends StatefulWidget{
   final item_id;
@@ -176,16 +177,26 @@ class ProductDetailState extends State<ProductDetails>{
           new Row(
             children: <Widget>[
               Padding(padding: const EdgeInsets.fromLTRB(12.9, 5.0, 5.0, 5.0),
-                child: new Text("Product brands", style: TextStyle(color: Colors.grey),),)
+                child: new Text("Product brands", style: TextStyle(color: Colors.grey),),),
+              Padding(padding: const EdgeInsets.all(5.0),
+                child: new Text("BrandX",),)
             ],
           ),
           new Row(
             children: <Widget>[
               Padding(padding: const EdgeInsets.fromLTRB(12.9, 5.0, 5.0, 5.0),
-                child: new Text("Product Condition", style: TextStyle(color: Colors.grey),),)
+                child: new Text("Product Condition", style: TextStyle(color: Colors.grey),),),
+              Padding(padding: const EdgeInsets.all(5.0),
+                child: new Text("New",),)
             ],
           ),
 
+          new Padding(padding: const EdgeInsets.all(20.0),
+            child: new Text("Similar Products"),),
+          Container(
+            height: 500,
+            child: Products()
+            ,)
         ],
       ),
     );
